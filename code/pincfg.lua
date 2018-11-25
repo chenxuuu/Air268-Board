@@ -127,9 +127,11 @@ sys.taskInit(function ()
     --订阅按键事件
     sys.subscribe("KEY_UP",function (s)
         log.info("key _/^^\\_",s)
+        sys.publish("UIWND_KEY",s,1)
     end)
     sys.subscribe("KEY_DOWN",function (s)
         log.info("key --\\__/-",s)
+        sys.publish("UIWND_KEY",s,0)
     end)
 end)
 

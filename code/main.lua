@@ -57,12 +57,18 @@ errDump.request("udp://ota.airm2m.com:9072")
 --require "update"
 --update.request()
 
---require"color_lcd_spi_ILI9341"
---合宙官方Air268F的全家桶套件中，一共出售过如下三种屏，如果屏的显示不正常，请使用如下三种中的一种自行验证匹配
+--加载设置文件
+require"config"
+require"nvm"
+nvm.init("config.lua")
+--工具类函数
+require"tools"
+
+--屏幕驱动
 require"color_lcd_spi_st7735"
---require"color_lcd_spi_st7735l"
---require"color_lcd_spi_gc9106"
+--初始化界面
 require"windows"
+--gpio设置
 require"pincfg"
 
 --启动系统框架
