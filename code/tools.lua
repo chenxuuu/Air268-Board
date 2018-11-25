@@ -5,9 +5,9 @@ module(..., package.seeall)
 --播放声音
 --file 声音文件
 --replay 是否循环播放
-function music(file,replay)
+function music(file,replay,cb)
     log.info("play music",file,replay,nvm.get("vol"))
-    audio.play(CALL,"FILE","/ldata/"..file,nvm.get("vol"),nil,replay)
+    audio.play(CALL,"FILE","/ldata/"..file,nvm.get("vol"),cb,replay)
 end
 
 --放置文字，自动转码
