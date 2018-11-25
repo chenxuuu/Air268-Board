@@ -2,7 +2,7 @@
 --显示初始界面
 module(..., package.seeall)
 require"uiWin"
-require"test1"
+require"keytest"
 
 --开机画面
 disp.putimage("/ldata/poweron.png")
@@ -37,6 +37,7 @@ sys.timerStart(uiWin.add,1500,
         disp.clear()
         --绘制背景
         disp.drawrect(0,0,160,8,tools.rgb(112,128,144))
+        disp.drawrect(0,0,16*(select*20/#apps),8,tools.rgb(0,255,255))
         disp.drawrect(0,9,160,38,tools.rgb(105,105,105))
         disp.drawrect(0,39,160,68,tools.rgb(120,120,120))
         disp.drawrect(0,69,160,98,tools.rgb(105,105,105))
@@ -71,6 +72,8 @@ sys.timerStart(uiWin.add,1500,
             select = select - 1
         elseif value == 0 and (key == "down" or key == "right") then
             select = select + 1
+        elseif value == 0 and (key == "ok" or key == "red") then
+            _G[apps[select*2-1]].load()
         end
 
         if select > #apps / 2 then
