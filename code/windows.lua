@@ -3,6 +3,8 @@
 module(..., package.seeall)
 require"uiWin"
 require"keytest"
+require"qrcodetest"
+require"musictest"
 
 --开机画面
 disp.putimage("/ldata/poweron.png")
@@ -74,6 +76,7 @@ sys.timerStart(uiWin.add,1500,
             select = select + 1
         elseif value == 0 and (key == "ok" or key == "red") then
             _G[apps[select*2-1]].load()
+            return
         end
 
         if select > #apps / 2 then
