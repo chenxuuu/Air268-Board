@@ -91,6 +91,16 @@ function redFnc(msg)
     end
 end
 
+function chargeFnc(msg)
+    --上升沿中断
+    if msg==cpu.INT_GPIO_POSEDGE then
+        sys.publish("CHAREG",1)
+    --下降沿中断
+    else
+        sys.publish("CHAREG",0)
+    end
+end
+
 up = pins.setup(pio.P0_29,upFnc)
 down = pins.setup(pio.P1_0,downFnc)
 left = pins.setup(pio.P0_31,leftFnc)
@@ -100,6 +110,7 @@ yellow = pins.setup(pio.P0_0,yellowFnc)
 blue = pins.setup(pio.P0_1,blueFnc)
 green = pins.setup(pio.P0_3,greenFnc)
 red = pins.setup(pio.P0_2,redFnc)
+charge = pins.setup(pio.P0_25,chargeFnc)
 
 sys.taskInit(function ()
     pio.pin.setpull(pio.PULLUP,pio.P0_29)
