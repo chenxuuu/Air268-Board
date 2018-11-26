@@ -29,6 +29,26 @@ end
 --选中的app
 local select = 1
 
+local function selectOne(c)
+    local appsNow = nvm.get("apps")
+    select = select + c
+    if select > #appsNow / 2 then
+        select = 1
+    elseif select <= 0 then
+        select = #appsNow / 2
+    end
+end
+
+local function selectPage(c)
+    local appsNow = nvm.get("apps")
+    select = select + c
+    if select > #appsNow / 2 then
+        select = #appsNow / 2
+    elseif select <= 0 then
+        select = 1
+    end
+end
+
 sys.timerStart(uiWin.add,1500,
 {
     --刷新画面
@@ -69,22 +89,20 @@ sys.timerStart(uiWin.add,1500,
     --按键处理
     onKey = function (key,value)
         if value == 1 then return end--不响应按键弹起的事件
-        local apps = nvm.get("apps")
 
-        if value == 0 and (key == "up" or key == "left") then
-            select = select - 1
-        elseif value == 0 and (key == "down" or key == "right") then
-            select = select + 1
+        if value == 0 and key == "up"then
+            selectOne(-1)
+        elseif value == 0 and key == "left"then
+            selectPage(-4)
+        elseif value == 0 and key == "down" then
+            selectOne(1)
+        elseif value == 0 and key == "right"then
+            selectPage(4)
         elseif value == 0 and (key == "ok" or key == "red") then
             _G[apps[select*2-1]].load()
             return
         end
 
-        if select > #apps / 2 then
-            select = 1
-        elseif select <= 0 then
-            select = #apps / 2
-        end
         uiWin.update()
     end
 })
