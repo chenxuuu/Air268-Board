@@ -20,10 +20,10 @@ function load()
             disp.update()
         end,
         onKey = function (key,value)
-            if value == 0 and key == "green" then
+            if value == 0 and key == "red" then
                 exit()
                 return
-            elseif value == 0 and key == "red" then
+            elseif value == 0 and key == "green" then
                 uiWin.update()
             end
         end

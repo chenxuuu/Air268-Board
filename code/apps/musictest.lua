@@ -17,14 +17,14 @@ function load()
             disp.clear()
             tools.puttext("声音测试：", 0,0)
             tools.puttext("黄键播放mp3", 0,17)
-            tools.puttext("红键播放tts", 0,33)
+            tools.puttext("蓝键播放tts", 0,33)
             disp.update()
         end,
         onKey = function (key,value)
-            if value == 0 and key == "green" then
+            if value == 0 and key == "red" then
                 exit()
                 return
-            elseif value == 0 and key == "red" and not playlock then
+            elseif value == 0 and key == "blue" and not playlock then
                 playlock = true
                 audio.play(TTS,"TTS","语音测试",nvm.get("vol"),function ()
                     playlock = false

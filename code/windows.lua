@@ -2,10 +2,13 @@
 --显示初始界面
 module(..., package.seeall)
 require"uiWin"
+require"pm"
+
 require"keytest"
 require"qrcodetest"
 require"musictest"
 require"showvbatt"
+require"camera"
 
 --开机画面
 disp.putimage("/ldata/poweron.png")
@@ -98,7 +101,7 @@ sys.timerStart(uiWin.add,1500,
             selectOne(1)
         elseif value == 0 and key == "right"then
             selectPage(4)
-        elseif value == 0 and (key == "ok" or key == "red") then
+        elseif value == 0 and (key == "ok" or key == "green") then
             _G[apps[select*2-1]].load()
             return
         end

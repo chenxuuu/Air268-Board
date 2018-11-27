@@ -29,7 +29,7 @@ function load()
         onKey = function (key,value)
             if value == 0 then
                 lastdownkey = key
-                if key == "green" then
+                if key == "red" then
                     count = count + 1
                     if count == 10 then
                         exit()
