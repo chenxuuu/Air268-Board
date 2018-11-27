@@ -9,6 +9,7 @@ require"qrcodetest"
 require"musictest"
 require"showvbatt"
 require"camera"
+require"scan"
 
 --开机画面
 disp.putimage("/ldata/poweron.png")

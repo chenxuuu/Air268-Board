@@ -1,7 +1,7 @@
 module(...)
 
 --音量，0-7
-vol = 3
+vol = 1
 
 --软件列表与代码
 apps = {
@@ -10,6 +10,7 @@ apps = {
     "musictest","",
     "showvbatt","",
     "camera","",
+    "scan","",
     "test1",[[
     module(..., package.seeall)
     function getName()
