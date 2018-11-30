@@ -16,7 +16,7 @@ function load()
             disp.clear()
             tools.puttext("电池信息：", 0,0)
             tools.puttext(misc.getVbatt().."mV，"..(pincfg.charge() == 0 and "充电中" or "未在充电"), 0,17)
-            tools.puttext("按红色键刷新", 0,33)
+            tools.puttext("按绿色键刷新", 0,33)
             disp.update()
         end,
         onKey = function (key,value)
