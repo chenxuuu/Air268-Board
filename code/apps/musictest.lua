@@ -10,7 +10,6 @@ local function exit()
     uiWin.remove(id)
 end
 
-local playlock = false
 function load()
     id = uiWin.add({
         onUpdate = function ()
@@ -24,16 +23,10 @@ function load()
             if value == 0 and key == "red" then
                 exit()
                 return
-            elseif value == 0 and key == "blue" and not playlock then
-                playlock = true
-                audio.play(TTS,"TTS","语音测试",nvm.get("vol"),function ()
-                    playlock = false
-                end)
-            elseif value == 0 and key == "yellow" and not playlock then
-                playlock = true
-                tools.music("poweron.mp3",false,function ()
-                    playlock = false
-                end)
+            elseif value == 0 and key == "blue" then
+                tools.tts("语音测试")
+            elseif value == 0 and key == "yellow" then
+                tools.music("poweron.mp3",false)
             end
             uiWin.update()
         end
